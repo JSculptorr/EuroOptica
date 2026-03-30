@@ -611,6 +611,34 @@
         height: 300px; /* Уменьшим высоту на мобилках */
     }
 }
+
+.footer-logo-container {
+    display: flex;
+    align-items: center; /* Центровка иконки и текста */
+    gap: 15px;           /* Расстояние между ними */
+}
+
+.footer-brand-icon {
+    height: 120px;        /* В футере можно сделать чуть побольше, чем в шапке */
+    width: auto;
+    object-fit: contain;
+    filter: brightness(1.2); /* Немного подсветим для темного фона футера */
+}
+
+.footer-logo-text {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 1.8rem;
+    color: var(--light);
+    letter-spacing: 2px;
+    text-transform: none;
+}
+
+/* Адаптив для мобилок (если футер центрируется) */
+@media (max-width: 768px) {
+    .footer-logo-container {
+        justify-content: flex-start;
+    }
+}
     </style>
 </head>
 <body>
@@ -903,12 +931,15 @@
 
     <footer id="contact">
     <div class="footer-grid">
-        <div>
-            <div class="footer-logo">EuroOptica</div>
-            <p style="margin-top: 15px; opacity: 0.6; font-size: 0.9rem;">
-                Ясность взгляда и безупречный стиль в каждой оправе.
-            </p>
-        </div>
+<div>
+    <div class="footer-logo-container">
+        <img src="photo_2026-03-30_16-37-13-removebg-preview.png" alt="EuroOptica Logo" class="footer-brand-icon">
+        <span class="footer-logo-text"></span>
+    </div>
+    <p style="margin-top: 15px; opacity: 0.6; font-size: 0.9rem; max-width: 250px;">
+        Ясность взгляда и безупречный стиль в каждой оправе.
+    </p>
+</div>
         <div>
             <h3>Контакты</h3>
             <p style="margin-top: 15px; font-size: 0.9rem;">Таджикистан / Душанбе</p>
