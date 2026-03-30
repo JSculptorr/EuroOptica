@@ -356,7 +356,7 @@
 .social-links a:hover .fa-telegram-plane { color: #0088cc; }
 /* Стили для иконки в прелоадере */
 .preloader-icon {
-    width: 200px; /* Настрой размер иконки под себя (например, 50px - 80px) */
+    width: 400px; /* Настрой размер иконки под себя (например, 50px - 80px) */
     height: auto;
     margin-bottom: 20px; /* Отступ между иконкой и текстом "EuroOptica" */
     display: block; /* Гарантирует, что она будет по центру в флекс-контейнере */
@@ -380,6 +380,7 @@
     align-items: center; /* Центрирует иконку и текст по вертикали */
     gap: 12px;           /* Расстояние между иконкой и текстом */
     text-decoration: none;
+
 }
 
 .nav-icon {
@@ -496,6 +497,120 @@
     .image-overlay-text { left: 20px; }
     .analytics-content { order: 1; }
 }
+
+/* Обертка для выравнивания */
+.brand-header {
+    display: flex;
+    justify-content: space-between; /* Текст слева, логотип справа */
+    align-items: center; /* Центрируем по вертикали */
+    margin-bottom: 10px; /* Отступ до подзаголовка */
+}
+
+/* Стили для самого логотипа внутри карточки */
+.brand-logo {
+    height: 30px; /* Настрой высоту (обычно 20-30px) */
+    width: auto;
+    object-fit: contain;
+    opacity: 0.9; /* Чтобы логотипы не были слишком яркими на темном фоне */
+}
+
+.brands-footer-line {
+    display: flex;
+    justify-content: center; /* Центрируем логотипы по горизонтали */
+    align-items: center;     /* Центрируем по вертикали */
+    gap: 60px;               /* Расстояние между логотипами */
+    margin-top: 50px;        /* Отступ от карточек сверху */
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.05); /* Тонкая разделительная линия */
+}
+
+/* Контейнер для каждого отдельного логотипа */
+.brand-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;            /* Одинаковая ширина контейнера для всех */
+    height: 60px;            /* Одинаковая высота контейнера для всех */
+}
+
+/* Стили для самих изображений */
+.brand-item img {
+    max-height: 100%;        /* Логотип не может быть выше контейнера */
+    max-width: 100%;         /* Логотип не может быть шире контейнера */
+    width: auto;             /* Сохраняем пропорции */
+    height: auto;            /* Сохраняем пропорции */
+    object-fit: contain;     /* Гарантирует, что логотип впишется целиком */
+    
+    /* Стилизация для премиум-вида */
+
+}
+
+/* Эффект при наведении на логотип */
+.brand-item img:hover {
+    filter: grayscale(0%);   /* Возвращаем цвет */
+    opacity: 1;              /* Убираем прозрачность */
+    transform: scale(1.05);  /* Немного увеличиваем */
+}
+
+#philosophy {
+    padding: 100px 5%;
+    background-color: var(--dark); /* Темный фон для контраста */
+}
+
+.philosophy-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* Отступ между двумя фото */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.philosophy-item {
+    flex: 1; /* Каждая фотография занимает одинаковое место */
+    position: relative;
+    height: 500px; /* Фиксированная высота для стройности */
+    overflow: hidden; /* Чтобы фото не вылезало за границы */
+    border-radius: 5px; /* Легкое закругление */
+    transition: transform 0.3s ease;
+}
+
+.philosophy-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Фото вписывается целиком в рамку */
+    filter: brightness(0.85); /* Чуть темнее, чтобы лейблы читались */
+    transition: filter 0.3s ease, transform 0.5s ease;
+}
+
+/* Лейблы 1. и 2. поверх фото */
+.philosophy-label {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    color: var(--accent); /* Твой синий/голубой акцент */
+    font-family: 'Bodoni Moda', serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Эффект при наведении на фото */
+.philosophy-item:hover img {
+    filter: brightness(1); /* Возвращаем яркость */
+    transform: scale(1.05); /* Легкое увеличение */
+}
+
+/* Адаптивность для мобилок */
+@media (max-width: 968px) {
+    .philosophy-grid {
+        flex-direction: column; /* На мобилках фото встанут друг под другом */
+        gap: 20px;
+    }
+    .philosophy-item {
+        height: 300px; /* Уменьшим высоту на мобилках */
+    }
+}
     </style>
 </head>
 <body>
@@ -538,7 +653,7 @@
 
   <header class="hero">
     <div class="hero-content">
-        <p class="reveal" style="letter-spacing: 5px; font-weight: 300; color: var(--accent);">PREMIUM CONCIERGE SERVICE</p>
+        <p class="reveal" style="letter-spacing: 5px; font-weight: 300; color: var(--accent);"></p>
         
         <h1 class="reveal">Любой мировой бренд. <br> Любая модель.</h1>
         
@@ -591,23 +706,43 @@
         </p>
     </div>
 
-    <div class="reviews-grid">
-        <div class="review-card" style="border-left: 3px solid #004a99;">
+   <div class="reviews-grid">
+    <div class="review-card" style="border-left: 3px solid #004a99;">
+        <div class="brand-header">
             <h3 style="color: var(--gold); margin-bottom: 10px;">Stellest <small>(Франция)</small></h3>
-            <p style="font-size: 0.9rem; font-weight: bold; color: var(--light);">Премиальный эффект</p>
-            <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 10px;">Лучшее решение от Essilor® с доказанной максимальной эффективностью замедления миопии.</p>
+            
         </div>
+        <p style="font-size: 0.9rem; font-weight: bold; color: var(--light);">Премиальный эффект</p>
+        <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 10px;">Лучшее решение от Essilor® с доказанной максимальной эффективностью замедления миопии.</p>
+    </div>
 
-        <div class="review-card" style="border-left: 3px solid var(--accent);">
+    <div class="review-card" style="border-left: 3px solid var(--accent);">
+        <div class="brand-header">
             <h3 style="color: var(--gold); margin-bottom: 10px;">MiYOSMART <small>(Япония)</small></h3>
-            <p style="font-size: 0.9rem; font-weight: bold; color: var(--light);">Баланс цены и качества</p>
-            <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 10px;">Технология D.I.M.S. Оптимальное сочетание японской точности и терапевтического результата.</p>
+            
         </div>
+        <p style="font-size: 0.9rem; font-weight: bold; color: var(--light);">Баланс цены и качества</p>
+        <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 10px;">Технология D.I.M.S. Оптимальное сочетание японской точности и терапевтического результата.</p>
+    </div>
 
-        <div class="review-card" style="border-left: 3px solid #eee;">
+    <div class="review-card" style="border-left: 3px solid #eee;">
+        <div class="brand-header">
             <h3 style="color: var(--gold); margin-bottom: 10px;">MyoCare <small>(Германия)</small></h3>
-            <p style="font-size: 0.9rem; font-weight: bold; color: var(--light);">Немецкое качество</p>
-            <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 10px;">Высокие стандарты оптики Zeiss. Комфортная адаптация и надежная защита зрения.</p>
+            
+        </div>
+        <p style="font-size: 0.9rem; font-weight: bold; color: var(--light);">Немецкое качество</p>
+        <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 10px;">Высокие стандарты оптики Zeiss. Комфортная адаптация и надежная защита зрения.</p>
+    </div>
+</div>
+<div class="brands-footer-line">
+        <div class="brand-item">
+            <img src="snapedit_1774883745196-removebg-preview.png" alt="Essilor Stellest">
+        </div>
+        <div class="brand-item">
+            <img src="logo-miyosmart-2.png" alt="Hoya MiYOSMART">
+        </div>
+        <div class="brand-item">
+            <img src="zeiss-logo.png" alt="Zeiss MyoCare">
         </div>
     </div>
 </section>
@@ -617,7 +752,7 @@
     <div class="analytics-container">
         <div class="analytics-image">
             <img src="Gemini_Generated_Image_rikyqorikyqoriky.png" alt="Showroom">
-            <div class="image-overlay-text">High Performance</div>
+            <div class="image-overlay-text"></div>
         </div>
         
         <div class="analytics-content">
@@ -669,37 +804,60 @@
         </div>
     </div>
 </section>
-
 <section id="collection" class="collection">
     <div class="section-title reveal">
         <span>PREMIUM SELECTION</span>
-        <h2>Бестселлеры</h2>
+        <h2>Умные линзы для детей</h2>
     </div>
     <div class="grid">
         <div class="card reveal">
-            <img src="681.webp" alt="Ray-Ban Classic">
+            <img src="Gemini_Generated_Image_u1hq7su1hq7su1hq (1).png" alt="Essilor Stellest Myopia Control">
             <div class="card-content">
-                <h3>Ray-Ban Wayfarer</h3>
-                <p>Вечная классика в черном цвете</p>
+                <h3>Essilor Stellest</h3>
+                <p>Революционная технология замедления миопии с доказанной эффективностью.</p>
             </div>
         </div>
+        
         <div class="card reveal">
-            <img src="683.jpg" alt="Prada Collection">
+            <img src="Gemini_Generated_Image_u1hq7su1hq7su1hq (2).png" alt="Hoya MiYOSMART D.I.M.S. Technology">
             <div class="card-content">
-                <h3>Prada Runway</h3>
-                <p>Элегантность и геометрия форм</p>
+                <h3>Hoya MiYOSMART</h3>
+                <p>Японская точность и комфорт. Терапевтический эффект для детского зрения.</p>
             </div>
         </div>
+        
         <div class="card reveal">
-            <img src="678.jpg" alt="Oakley Sport">
+            <img src="Gemini_Generated_Image_u1hq7su1hq7su1hq.png" alt="Zeiss MyoCare German Engineering">
             <div class="card-content">
-                <h3>Oakley Holbrook</h3>
-                <p>Технологичность и защита для активных</p>
+                <h3>Zeiss MyoCare</h3>
+                <p>Немецкие стандарты оптики. Надежная защита и мягкая адаптация.</p>
             </div>
         </div>
     </div>
+</section>
+
+<section id="philosophy" class="reveal">
+    <div class="section-title">
+        <span>Vision and Style</span>
+        <h2>Гармония взгляда</h2>
+    </div>
+    <div class="philosophy-grid">
+        <div class="philosophy-item philosophy-image">
+            <img src="Gemini_Generated_Image_gg3bwmgg3bwmgg3b (1).png" alt="EuroOptica Style selection">
+            <div class="philosophy-label">1. Эстетика</div>
+        </div>
+        
+        <div class="philosophy-item philosophy-image">
+            <img src="Gemini_Generated_Image_gg3bwmgg3bwmgg3b.png" alt="Professional eye check Dushanbe">
+            <div class="philosophy-label">2. Точность</div>
+        </div>
+    </div>
     
-    
+    <div class="philosophy-content" style="max-width: 800px; margin: 40px auto 0; text-align: center;">
+        <p style="color: var(--gold); letter-spacing: 1px; line-height: 1.8; opacity: 0.8; font-size: 0.95rem;">
+            В EuroOptica мы верим, что идеальные очки — это сочетание безупречного стиля и идеального зрения. Наш подход объединяет профессиональную диагностику на новейшем оборудовании и персональный подбор оправ от мировых брендов, чтобы вы видели мир ясно и выглядели великолепно.
+        </p>
+    </div>
 </section>
 
 <section id="faq" class="faq-section reveal">
@@ -762,15 +920,22 @@
             <p style="margin-top: 15px; font-size: 0.9rem;">Пн – Сб: 09:00 — 19:00</p>
             <p style="font-size: 0.9rem;">Вс: Выходной</p>
         </div>
-        <div class="social-links">
-            <h3>Мы в соцсетях</h3>
-            <div style="margin-top: 15px;">
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/9929001234567" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-telegram-plane"></i></a>
-            </div>
-        </div>
+       <div class="social-links">
+    <h3>Мы в соцсетях</h3>
+    <div style="margin-top: 15px;">
+        <a href="https://www.instagram.com/euro_optica_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" title="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        
+        <a href="https://wa.me/992900000300?text=Здравствуйте!%20Я%20хочу%20заказать%20очки%20в%20EuroOptica" target="_blank" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        
+        <a href="https://t.me/euroopticatj" target="_blank" title="Telegram">
+            <i class="fab fa-telegram-plane"></i>
+        </a>
     </div>
+</div>
     <p style="text-align: center; margin-top: 40px; opacity: 0.3; font-size: 0.7rem;">&copy; 2026 EuroOptica — Салон профессиональной оптики.</p>
 </footer>
 
