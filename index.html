@@ -65,11 +65,12 @@
             display: flex; flex-direction: column;
             justify-content: center; align-items: center;
             cursor: pointer; z-index: 2100;
+          
         }
 
         .burger span {
             width: 24px; height: 1.5px;
-            background: var(--gold);
+            background: white;
             margin: 3.5px; transition: 0.4s;
         }
 
@@ -107,7 +108,13 @@
             padding: 0 20px;
         }
 
-        .hero h1 { font-size: clamp(2rem, 10vw, 5rem); margin-bottom: 15px; line-height: 1.2; }
+        .hero h1 { font-size: clamp(2rem, 10vw, 5rem); margin-bottom: 15px; line-height: 1.2; 
+        
+        background: linear-gradient(to right, #fff, var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+        }
         .hero p { font-size: 0.8rem; color: var(--gold); letter-spacing: 4px; }
 
         /* --- ABOUT --- */
@@ -347,14 +354,156 @@
 .social-links a:hover .fa-instagram { color: #E1306C; }
 .social-links a:hover .fa-whatsapp { color: #25D366; }
 .social-links a:hover .fa-telegram-plane { color: #0088cc; }
+/* Стили для иконки в прелоадере */
+.preloader-icon {
+    width: 200px; /* Настрой размер иконки под себя (например, 50px - 80px) */
+    height: auto;
+    margin-bottom: 20px; /* Отступ между иконкой и текстом "EuroOptica" */
+    display: block; /* Гарантирует, что она будет по центру в флекс-контейнере */
+    margin-left: auto;
+    margin-right: auto;
+   
+    
+    /* Применяем ту же пульсирующую анимацию, что и у логотипа */
+    animation: pulseLogo 2s infinite ease-in-out;
+    opacity: 0.8; /* Делаем её чуть мягче */
+}
 
+/* Обновляем отступы у текста логотипа, так как теперь над ним есть иконка */
+.preloader-logo {
+    font-size: 2rem; /* Немного уменьшим шрифт, чтобы композиция была гармоничной */
+    margin-bottom: 25px; /* Увеличим отступ до полоски загрузки */
+}
+/* Стили для логотипа в навигации */
+.logo {
+    display: flex;
+    align-items: center; /* Центрирует иконку и текст по вертикали */
+    gap: 12px;           /* Расстояние между иконкой и текстом */
+    text-decoration: none;
+}
+
+.nav-icon {
+    height: 100px;        /* Настрой высоту под размер шапки (обычно 30-40px) */
+    width: auto;         /* Ширина подберется автоматически */
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+/* Эффект при наведении на логотип */
+.logo:hover .nav-icon {
+    transform: scale(1.1); /* Иконка немного увеличится при наведении */
+}
+
+.logo span {
+    font-family: 'Bodoni Moda', serif; /* Или твой новый шрифт для оптики */
+    font-size: 1.5rem;
+    color: var(--light);
+    letter-spacing: 2px;
+}
+
+.review-card h3 {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+.review-card h3 small {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    opacity: 0.6;
+    display: block;
+    margin-top: 5px;
+}
+
+.analytics-section {
+    padding: 100px 5%;
+    background-color: var(--dark);
+}
+
+.analytics-container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.analytics-image {
+    flex: 1;
+    position: relative;
+    height: 500px;
+}
+
+.analytics-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    filter: brightness(0.7);
+}
+
+.image-overlay-text {
+    position: absolute;
+    bottom: 30px;
+    left: -30px;
+    background: var(--accent);
+    color: white;
+    padding: 20px 40px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.analytics-content { flex: 1; }
+
+.analysis-grid {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.analysis-item {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 20px;
+}
+
+.analysis-item .num {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin-bottom: 5px;
+}
+
+.analysis-item .label {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.analysis-item p {
+    font-size: 0.85rem;
+    opacity: 0.6;
+    line-height: 1.5;
+}
+
+/* Адаптивность для мобилок */
+@media (max-width: 968px) {
+    .analytics-container { flex-direction: column; }
+    .analytics-image { width: 100%; height: 300px; order: 2; }
+    .image-overlay-text { left: 20px; }
+    .analytics-content { order: 1; }
+}
     </style>
 </head>
 <body>
 
-  <div id="preloader">
+<div id="preloader">
     <div class="preloader-content">
-        <div class="preloader-logo">EuroOptica</div>
+        <img src="photo_2026-03-30_16-37-13-removebg-preview.png" alt="EuroOptica Icon" class="preloader-icon">
+        <div class="preloader-logo"></div>
         <div class="preloader-bar"></div>
     </div>
 </div>
@@ -364,14 +513,17 @@
     <span>Консультация</span>
 </a>
 
-    <nav id="navbar">
-        <a href="#" class="logo">EuroOptica</a>
-        <div class="burger" id="burger">
-            <span class="line1"></span>
-            <span class="line2"></span>
-            <span class="line3"></span>
-        </div>
-    </nav>
+  <nav id="navbar">
+    <a href="#" class="logo">
+        <img src="photo_2026-03-30_16-37-13-removebg-preview.png" alt="EuroOptica Logo" class="nav-icon">
+        <span></span>
+    </a>
+    <div class="burger" id="burger">
+        <span class="line1"></span>
+        <span class="line2"></span>
+        <span class="line3"></span>
+    </div>
+</nav>
 
     <div class="nav-overlay" id="menu">
       
@@ -384,11 +536,25 @@
         </ul>
     </div>
 
-    <header class="hero">
+  <header class="hero">
     <div class="hero-content">
-        <p class="reveal">EuroOptica</p>
-        <h1 class="reveal">Ясность взгляда <br> в каждой оправе</h1>
-        <p class="reveal" style="color: var(--light); letter-spacing: 2px; margin-top: 10px; font-size: 0.9rem;">ПРОФЕССИОНАЛЬНАЯ ДИАГНОСТИКА И СТИЛЬНЫЕ РЕШЕНИЯ</p>
+        <p class="reveal" style="letter-spacing: 5px; font-weight: 300; color: var(--accent);">PREMIUM CONCIERGE SERVICE</p>
+        
+        <h1 class="reveal">Любой мировой бренд. <br> Любая модель.</h1>
+        
+        <p class="reveal" style="max-width: 700px; margin: 25px auto; line-height: 1.7; font-size: 1.1rem;">
+            В EuroOptica доступны коллекции Ray-Ban, Prada, Gucci и еще 50+ брендов по лучшим ценам. 
+            <strong>Не нашли нужную модель в наличии?</strong> Мы привезем её специально для вас под заказ из Европы или США в кратчайшие сроки.
+        </p>
+        
+        <div class="reveal" style="margin-top: 35px; display: flex; gap: 15px; justify-content: center;">
+            <a href="https://wa.me/9929001234567" class="consult-btn" style="position: static; padding: 18px 35px; background: var(--accent); border: none;">
+                Заказать свою модель
+            </a>
+            <a href="#collection" class="consult-btn" style="position: static; padding: 18px 35px; background: transparent; border: 1px solid white;">
+                Смотреть наличие
+            </a>
+        </div>
     </div>
 </header>
 
@@ -416,6 +582,72 @@
         <p>Изготовление за 1 час</p>
     </div>
 </div>
+<section id="myopia" class="faq-section reveal">
+    <div class="section-title">
+        <span>Kids Vision Care</span>
+        <h2>Контроль миопии</h2>
+        <p style="max-width: 700px; margin: 20px auto; opacity: 0.8; line-height: 1.6;">
+            Обычные очки не останавливают рост «минуса». Мы предлагаем инновационные линзы, которые замедляют развитие близорукости у детей.
+        </p>
+    </div>
+
+    <div class="reviews-grid">
+        <div class="review-card" style="border-left: 3px solid #004a99;">
+            <h3 style="color: var(--gold); margin-bottom: 10px;">Stellest <small>(Франция)</small></h3>
+            <p style="font-size: 0.9rem; font-weight: bold; color: var(--light);">Премиальный эффект</p>
+            <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 10px;">Лучшее решение от Essilor® с доказанной максимальной эффективностью замедления миопии.</p>
+        </div>
+
+        <div class="review-card" style="border-left: 3px solid var(--accent);">
+            <h3 style="color: var(--gold); margin-bottom: 10px;">MiYOSMART <small>(Япония)</small></h3>
+            <p style="font-size: 0.9rem; font-weight: bold; color: var(--light);">Баланс цены и качества</p>
+            <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 10px;">Технология D.I.M.S. Оптимальное сочетание японской точности и терапевтического результата.</p>
+        </div>
+
+        <div class="review-card" style="border-left: 3px solid #eee;">
+            <h3 style="color: var(--gold); margin-bottom: 10px;">MyoCare <small>(Германия)</small></h3>
+            <p style="font-size: 0.9rem; font-weight: bold; color: var(--light);">Немецкое качество</p>
+            <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 10px;">Высокие стандарты оптики Zeiss. Комфортная адаптация и надежная защита зрения.</p>
+        </div>
+    </div>
+</section>
+
+
+<section class="analytics-section reveal">
+    <div class="analytics-container">
+        <div class="analytics-image">
+            <img src="Gemini_Generated_Image_rikyqorikyqoriky.png" alt="Showroom">
+            <div class="image-overlay-text">High Performance</div>
+        </div>
+        
+        <div class="analytics-content">
+            <div class="section-title" style="text-align: left; margin: 0;">
+                <span>Global Partnership</span>
+                <h2>Масштаб выбора</h2>
+            </div>
+            
+            <div class="analysis-grid">
+                <div class="analysis-item">
+                    <div class="num">50+</div>
+                    <div class="label">Мировых брендов</div>
+                    <p>От Ray-Ban до эксклюзивных дизайнерских домов Франции и Италии.</p>
+                </div>
+                
+                <div class="analysis-item">
+                    <div class="num">3000+</div>
+                    <div class="label">Единиц ассортимента</div>
+                    <p>Самый большой выбор оправ и солнцезащитных очков в регионе.</p>
+                </div>
+                
+                <div class="analysis-item">
+                    <div class="num">100%</div>
+                    <div class="label">Оригинальный продукт</div>
+                    <p>Прямые поставки и сертификаты подлинности на каждую модель.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <section class="stats-section reveal">
     <div class="stats-grid">
@@ -539,9 +771,8 @@
             </div>
         </div>
     </div>
-    <p style="text-align: center; margin-top: 40px; opacity: 0.3; font-size: 0.7rem;">&copy; 2026 OPTIC LUX — Салон профессиональной оптики.</p>
+    <p style="text-align: center; margin-top: 40px; opacity: 0.3; font-size: 0.7rem;">&copy; 2026 EuroOptica — Салон профессиональной оптики.</p>
 </footer>
-
 
     <script>
 
